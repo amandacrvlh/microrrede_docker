@@ -1,0 +1,1 @@
+gcc -O2 -DRT -DUSE_RTMODEL -DNCSTATES=0 *.c -I. -o simulacao_linux.elf -lm

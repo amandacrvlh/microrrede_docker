@@ -1,0 +1,8 @@
+# 1. Limpa a memória compartilhada no host
+sudo rm -f /dev/shm/microrrede_shm /dev/shm/shm_microrrede
+
+# 2. Inicia a MU na mesma interface de rede 
+docker run --rm -it --ipc=host --net=host --cap-add=NET_ADMIN microrrede_mu ./mu_virtual enp2s0
+
+# 3. Inicia o simulador (trocado para 'microrrede_microrrede' e corrigido o caminho do executável)
+docker run --rm -it --cpuset-cpus="2" --cap-add=SYS_NICE --ipc=host --net=host microrrede_microrrede /app/microrrede.elf

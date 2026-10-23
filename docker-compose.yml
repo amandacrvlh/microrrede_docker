@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  microrrede:
+    build:
+      context: ./microrrede
+      dockerfile: Dockerfile
+    container_name: microrrede
+    ipc: host  # Permite o compartilhamento de memoria com o host/outros conteineres
+    restart: always
+
+  mu:
+    build:
+      context: ./mu
+      dockerfile: Dockerfile
+    container_name: mu
+    ipc: host  # Permite acessar a mesma regiao /dev/shm
+    depends_on:
+      - microrrede
+    restart: always

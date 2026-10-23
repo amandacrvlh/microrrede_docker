@@ -1,0 +1,2 @@
+cd /home/grei/Documentos/microrrede/mu
+docker build -t mu_microrrede .
